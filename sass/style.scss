@@ -1,1 +1,14 @@
-@import'./components/main','./util/vars'
+@import './util/vars', './util/mixins', './components/main', './components/modal';
+
+*{
+    list-style-type: none;
+    text-decoration: none;
+}
+button , .post{
+    &:hover{
+        transform: scale(1.05);
+    };
+}
+textarea{
+    margin: 0;
+}

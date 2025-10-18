@@ -1,0 +1,24 @@
+@mixin btn($width:200px, $height:60px, $background : $green, $border: none,  $border-rad:15px,$transition: transform 0.3s ease, $shadow:4px 7px 4px rgba(0,0,0,25%)){
+    width:$width;
+    height: $height;
+    background-color: $background;
+    border:  $border;
+    border-radius: $border-rad;
+    transition:$transition;
+    box-shadow:$shadow;
+}
+@mixin text($family:"Rubik", $weight:400, $size: 32px, $color:$white){
+    font-family: $family;
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+}
+@mixin input($shadow:4px 7px 4px rgba(0,0,0,25%), $bg:$dark-pink, $border:none,$border-rad:20px){
+    box-shadow:$shadow;
+    background-color:$bg;
+    border: $border;
+    border-radius: $border-rad;
+    &:focus{
+        outline: none;
+    }
+}
