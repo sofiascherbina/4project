@@ -1,8 +1,12 @@
-<div class="post">
-    <h2>{{title}}</h2>
-    <p>{{text}}</p>
-    <button class="editPostButton" data-id="changeBtn">Редагувати</button>
-    <button class="deletePostButton" data-id="deleteBtn">Видалити</button>
+{{#each posts}}
+<li class="post">
+    <h2>{{user}}</h2>
+    <p>{{tags}}</p>
+    <img id="img" src="{{webformatURL}}" alt="{{tags}}" width="300px">
+    <div class="buttons">
+        <button class="editPostButton" data-id="changeBtn">Редагувати</button>
+        <button class="deletePostButton" data-id="deleteBtn">Видалити</button>
+    </div>
     <div class="commentsContainer" data-id="">
         <h3>Коментарі:</h3>
             <ul>
@@ -13,4 +17,5 @@
             <button type="submit">Додати коментар</button>
         </form>
     </div>
-</div>
+</li>
+{{/each}}

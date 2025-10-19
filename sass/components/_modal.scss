@@ -1,0 +1,65 @@
+.open-modal{
+    @include btn($border-rad:10px, $width:180px, $height:60px,);
+    border: 5px solid $white;
+    @include text($size:20px);
+    margin:50px 0 0 50px ;
+    &:hover{
+        @include btn($background:$white,$width:180px, $height:60px,$border-rad:10px);
+        @include text($size:20px, $color:$green);
+        border: 5px solid $green;
+    }
+}
+.modal-form-bg{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color:rgba(0,0,0,25%);
+}
+.modal-form{
+    width: 1000px;
+    height: 500px;
+    margin: 150px auto;
+    background-color: $soft-pink-bg;
+}
+.opened{
+    display: block;
+}
+.close-modal{
+    @include btn($width:60px, $height:60px, $background:inherit, $border: 4px solid $white, $border-rad:50px, $shadow:0 0 10px rgba(0,0,0,25%));
+    margin:20px 0 0 900px;
+    @include text( $weight:600);
+}
+#titleInput{
+    display: block;
+    width: 600px;
+    height: 60px;
+    padding-left: 20px;
+    margin:0 auto;
+    @include text($color:$text-col, $size:20px);
+    @include input();
+}
+#contentInput{
+    display: block;
+    width: 800px;
+    height: 200px;
+    padding: 20px 0 0 20px;
+    margin: 40px auto 30px;
+    @include text($color:$text-col, $size:20px);
+    @include input();
+}
+.create-post{
+ @include btn($border-rad:10px);
+    width: 180px;
+    height: 60px;
+    border: 5px solid $white;
+    @include text($size:20px);
+    margin-left:800px;
+     &:hover{
+        @include btn($background:$white,$width:180px, $height:60px, $border-rad:10px);
+        @include text($size:20px, $color:$green);
+        border: 5px solid $green;
+    }
+}
