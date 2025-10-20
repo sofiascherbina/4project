@@ -18,6 +18,10 @@
         <div class="title-bg">
             <h1 class="main-title">Blog</h1>
         </div>
+        <select name="pages" class="page-selector">
+            <option value="mainPage">Головна</option>
+            <option value="myPage">Мої пости</option>
+        </select>
     </header>
     <main>
         <div class="post-act">
@@ -31,13 +35,15 @@
         <div class="modal-form">
             <button class="close-modal">X</button>
             <form id="createPostForm">
-                <input type="text" id="titleInput" placeholder="Заголовок" required>
-                <textarea id="contentInput" placeholder="Зміст" required></textarea>
+                <input type="text" name="titleInput" id="titleInput" placeholder="Заголовок" required>
+                <textarea id="contentInput" name="contentInput" placeholder="Зміст" required></textarea>
+                <input id="picture" name="image" type="text" placeholder="Посилання на картинку">
                 <button type="submit" class="create-post">Створити пост</button>
             </form>
         </div>    
     </div>
 </div>
 <script src="./script.js"></script>
+<script src="./addposts.js"></script>
 </body>
 </html>

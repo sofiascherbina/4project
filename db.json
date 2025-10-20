@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": "1594",
+      "title": "miku",
+      "text": "the best",
+      "image":"https://i.pinimg.com/736x/6c/63/eb/6c63eb4b79d92b81dce7674ffa37e76c.jpg"
+    },
+    {
+      "id": "3e39",
+      "title": "violet",
+      "text": "child of war",
+      "image": "https://i.pinimg.com/736x/d4/f2/65/d4f26545d888415fc8f8d15331b72330.jpg"
+    }
+  ]
+}

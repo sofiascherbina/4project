@@ -16,6 +16,7 @@ header{
     border-radius: 50px;
     border: none;
     margin: 0 auto;
+    box-shadow:0 0 25px rgba(0,0,0,50%);
 }
 .main-title{
     @include text($family:'Alegreya', $size:100px);
@@ -72,6 +73,7 @@ header{
     transition: transform 0.3s ease;
     margin-bottom: 30px;
     border-radius: 20px;
+    box-shadow: 4px 7px 4px rgba(0,0,0,25%);
     & h2{
         @include text($size:30px,$weight:600,$color: $text-col);
         margin: 20px 0;
@@ -88,6 +90,9 @@ header{
         box-shadow:0 0 30px rgba(0,0,0,55%);
     }
 }
+.mypost{
+    height: 800px;
+}
 .buttons{
     display: flex;
     justify-content: space-around;
@@ -101,7 +106,7 @@ header{
 .commentsContainer{
     background-color: $dark-pink;
     width: 470px;
-    height: 250px;
+    height: 300px;
     border-radius: 20px;
     padding-top: 5px;
     margin: 20px auto;
@@ -111,12 +116,15 @@ header{
         margin: 0;
     }
 }
+.comment-list{
+    height: 150px;
+}
 .createCommentForm{
     & input{
         @include input($bg:$soft-pink-bg, $border-rad:10px);
         @include text($size:15px);
         width: 420px;
-        height: 30px;
+        height: 35px;
         display: block;
         margin: 0 auto;
         padding-left: 10px;
@@ -124,6 +132,24 @@ header{
     & button{
         @include btn($width:150px, $height:40px, $border-rad:10px);
         @include text($size: 15px);
-        margin-left: 300px;
+        margin: 30px 0 0 300px;
     }
+}
+.page-selector{
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    width: 170px;
+    height: 60px;
+    padding: 0 5px;
+    background-color: $dark-pink;
+    border: 5px solid $white;
+    border-radius: 10px;
+    outline: none;
+    @include text($size:20px);
+    transition: transform 0.3s ease;
+     &:hover{
+        transform: scale(1.05);
+    };
+    box-shadow:4px 7px 4px rgba(0,0,0,25%);
 }

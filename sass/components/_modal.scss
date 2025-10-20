@@ -12,6 +12,7 @@
 .modal-form-bg{
     display: none;
     position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
@@ -20,8 +21,8 @@
 }
 .modal-form{
     width: 1000px;
-    height: 500px;
-    margin: 150px auto;
+    height: 600px;
+    margin: 120px auto;
     background-color: $soft-pink-bg;
 }
 .opened{
@@ -32,7 +33,7 @@
     margin:20px 0 0 900px;
     @include text( $weight:600);
 }
-#titleInput{
+#titleInput, #picture{
     display: block;
     width: 600px;
     height: 60px;
@@ -46,7 +47,7 @@
     width: 800px;
     height: 200px;
     padding: 20px 0 0 20px;
-    margin: 40px auto 30px;
+    margin: 40px auto 40px;
     @include text($color:$text-col, $size:20px);
     @include input();
 }
@@ -56,7 +57,7 @@
     height: 60px;
     border: 5px solid $white;
     @include text($size:20px);
-    margin-left:800px;
+    margin:30px 0 0 780px;
      &:hover{
         @include btn($background:$white,$width:180px, $height:60px, $border-rad:10px);
         @include text($size:20px, $color:$green);
