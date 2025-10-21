@@ -5,17 +5,20 @@ let form = document.querySelector('#createPostForm');
 let createBtn = document.querySelector('.create-post');
 let page = 1;
 let perPage = 3;
+let myPage = 1;
+let perMyPage = 3;
 let template = null;
 let myTemplate = null;
 let data = [];
 
-async function tempalteReady(){
+async function templateReady(){
     let temp = await fetch('posts.hbs');
     let res = await temp.text();
     template = Handlebars.compile(res);
 }
+
 async function showPosts(){
-    if (!template) await tempalteReady();
+    if (!template) await templateReady();
     const posts = await fetchPost(page, perPage);
     renderPost(posts.hits);
     page++;
@@ -55,7 +58,7 @@ async function getPosts(){
         let getFetch = await fetch('http://localhost:3001/posts');
         let res = await getFetch.json();
         data = res;
-        renderMyPost(data);
+        renderMyPost();
         if(data.length === 0 ){
             throw new Error('posts are not found');
         }
@@ -65,8 +68,11 @@ async function getPosts(){
     }
 }
 
-async function renderMyPost(posts){
-    let markup = posts
+async function renderMyPost(){
+    const start = (myPage - 1) * perMyPage;
+    const end = start + perMyPage;
+    const pageData = data.slice(start,end);
+    let markup = pageData
     .map(({title,text,image})=>{
         return `
         <li class="post mypost">
@@ -116,7 +122,7 @@ async function addPost(e){
         }
         let result = await postCreate(res);
         data.push(result);
-        renderMyPost(data);
+        renderMyPost();
     }
     catch{
         return alert('post is not added');
@@ -128,15 +134,49 @@ createBtn.addEventListener('click',(event)=>{
 });
 
 showPosts();
-    pageSelector.addEventListener('change', ()=>{
-        let selValue = pageSelector.value;
+async function waitLoad(){
+    myPage++;
+    await getPosts();
+}
+pageSelector.addEventListener('change', ()=>{
+    let selValue = pageSelector.value;
+
     if(selValue === 'mainPage'){
         postList.innerHTML = "";
         page = 1;
         showPosts();
+
+        loadMoreBtn.removeEventListener('click', waitLoad);
+        loadMoreBtn.addEventListener('click', showPosts);
     }
     else if(selValue === 'myPage'){
         postList.innerHTML = "";
-        getPosts();
+        myPage = 1;
+        loadMoreBtn.style.display = 'none';
+        async function checkData(){
+            await getPosts();
+             if(data.length > 3){
+                loadMoreBtn.style.display = 'block';
+                loadMoreBtn.removeEventListener('click', showPosts);
+                loadMoreBtn.addEventListener('click',waitLoad);
+            }
+        }
+        checkData();
     }
-    });
+});
+async function searchPost() {
+    let inpValue = searchInput.value;
+    let search = await fetch(`https://pixabay.com/api/?key=52031155-91d48f629b7cc6501a4f300a5&users=${inpValue}`);
+    return search.json();
+}
+async function showSearchedPosts(){
+    if (!template) await templateReady();
+    const posts = await searchPost();
+    renderPost(posts.hits);
+}
+let searchInput = document.querySelector('.search');
+searchInput.addEventListener('input',_.debounce(()=>{
+    postList.innerHTML = '';
+    showSearchedPosts();
+}, 500));
+
