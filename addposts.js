@@ -8,7 +8,6 @@ let perPage = 3;
 let myPage = 1;
 let perMyPage = 3;
 let template = null;
-let myTemplate = null;
 let data = [];
 
 async function templateReady(){
@@ -73,15 +72,15 @@ async function renderMyPost(){
     const end = start + perMyPage;
     const pageData = data.slice(start,end);
     let markup = pageData
-    .map(({title,text,image})=>{
+    .map(({title,text,image,id})=>{
         return `
         <li class="post mypost">
     <h2>${title}</h2>
     <p>${text}</p>
     <img id="img" src="${image}" alt="${title}" height="200px" width="auto">
     <div class="buttons">
-        <button class="editPostButton" data-id="changeBtn">Редагувати</button>
-        <button class="deletePostButton" data-id="deleteBtn">Видалити</button>
+        <button class="editPostButton" id="${id}">Редагувати</button>
+        <button class="deletePostButton" id="${id}">Видалити</button>
     </div>
     <div class="commentsContainer" data-id="">
         <h3>Коментарі:</h3>
@@ -133,50 +132,112 @@ createBtn.addEventListener('click',(event)=>{
     addPost(form);
 });
 
-showPosts();
 async function waitLoad(){
     myPage++;
     await getPosts();
 }
-pageSelector.addEventListener('change', ()=>{
-    let selValue = pageSelector.value;
 
-    if(selValue === 'mainPage'){
-        postList.innerHTML = "";
-        page = 1;
-        showPosts();
+async function showSearchedPosts() {
+  if (!template) await templateReady();
+   const inpValue = searchInput.value;
 
-        loadMoreBtn.removeEventListener('click', waitLoad);
-        loadMoreBtn.addEventListener('click', showPosts);
-    }
-    else if(selValue === 'myPage'){
-        postList.innerHTML = "";
-        myPage = 1;
-        loadMoreBtn.style.display = 'none';
-        async function checkData(){
-            await getPosts();
-             if(data.length > 3){
-                loadMoreBtn.style.display = 'block';
-                loadMoreBtn.removeEventListener('click', showPosts);
-                loadMoreBtn.addEventListener('click',waitLoad);
-            }
-        }
-        checkData();
-    }
-});
-async function searchPost() {
-    let inpValue = searchInput.value;
-    let search = await fetch(`https://pixabay.com/api/?key=52031155-91d48f629b7cc6501a4f300a5&users=${inpValue}`);
-    return search.json();
+    // if(inpValue.length === 0){
+    //     postList.innerHTML = '';
+    // }
+  
+  const data = await fetch(`https://pixabay.com/api/?key=52031155-91d48f629b7cc6501a4f300a5`);
+  const posts = await data.json();
+
+  const filtered = posts.hits.filter(post => post.user.includes(inpValue));
+
+  renderPost(filtered);
 }
-async function showSearchedPosts(){
-    if (!template) await templateReady();
-    const posts = await searchPost();
-    renderPost(posts.hits);
-}
+
 let searchInput = document.querySelector('.search');
-searchInput.addEventListener('input',_.debounce(()=>{
-    postList.innerHTML = '';
-    showSearchedPosts();
+let currentPage = 'mainPage'; 
+
+searchInput.addEventListener('input', _.debounce(async () => {
+  const inpValue = searchInput.value.trim();
+  postList.innerHTML = '';
+
+  if (currentPage === 'mainPage') {
+    if (inpValue === '') {
+      page = 1;
+      showPosts();
+      return;
+    }
+
+    if (!template) await templateReady();
+    const data = await fetch(`https://pixabay.com/api/?key=52031155-91d48f629b7cc6501a4f300a5`);
+    const posts = await data.json();
+    const filtered = posts.hits.filter(post => post.user.includes(inpValue));
+    renderPost(filtered);
+
+  } else if (currentPage === 'myPage') {
+    if (inpValue === '') {
+        postList.innerHTML = '';
+        await getPosts();
+        // renderMyPost();
+        return;
+    }
+
+    const myData = await fetch(`http://localhost:3001/posts?title=${inpValue}`);
+    const myPosts = await myData.json();
+    data = myPosts;
+    renderMyPost();
+  }
 }, 500));
 
+pageSelector.addEventListener('change', () => {
+  let selValue = pageSelector.value;
+  postList.innerHTML = "";
+
+  if (selValue === 'mainPage') {
+    currentPage = 'mainPage';
+    page = 1;
+    showPosts();
+
+    loadMoreBtn.style.display = 'block';
+    loadMoreBtn.removeEventListener('click', waitLoad);
+    loadMoreBtn.addEventListener('click', showPosts);
+
+  } else if (selValue === 'myPage') {
+    currentPage = 'myPage';
+    myPage = 1;
+    loadMoreBtn.style.display = 'none';
+
+    async function checkData() {
+      await getPosts();
+      if (data.length > 3) {
+        loadMoreBtn.style.display = 'block';
+        loadMoreBtn.removeEventListener('click', showPosts);
+        loadMoreBtn.addEventListener('click', waitLoad);
+      }
+    }
+    checkData();
+  }
+});
+
+async function detetePost(id){
+    try{
+        let options={
+            method: 'DELETE'
+        }
+        let delFetch = await fetch(`http://localhost:3001/posts/${id}`, options);
+        let res = await delFetch.json();
+        data.splice(data.indexOf(res),1);
+        postList.innerHTML = '';
+        getPosts();
+    }
+    catch{
+        return alert('error');
+    }
+}
+postList.addEventListener('click',(event)=>{
+    event.preventDefault();
+    if(event.target.classList.contains('deletePostButton')){
+        detetePost(event.target.id);
+    };
+ });
+
+showPosts();

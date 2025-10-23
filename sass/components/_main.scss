@@ -1,6 +1,7 @@
 .main{
     // height: 100vh;
     background-color: $main-bg;
+    padding-bottom: 50px;
 }
 header{
     height: 250px;
@@ -51,7 +52,7 @@ header{
     @include btn($background:$dark-pink, $width:1200px, $height:60px);
     @include text($size:40px, $family:'Alegreya',$weight:600);
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto 0;
      &:hover{
         @include btn($background:$white,$width:1200px, $height:60px,);
         @include text($size:40px,$family:'Alegreya', $color:$text-col, $weight:600);

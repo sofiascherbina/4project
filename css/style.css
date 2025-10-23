@@ -1,5 +1,6 @@
 .main {
   background-color: rgba(227, 212, 209, 0.4);
+  padding-bottom: 50px;
 }
 
 header {
@@ -82,7 +83,7 @@ header {
   font-size: 40px;
   color: #F5F5F5;
   text-align: center;
-  margin: 0 auto;
+  margin: 10px auto 0;
 }
 .load-more:hover {
   width: 1200px;
