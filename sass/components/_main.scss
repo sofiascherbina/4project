@@ -52,7 +52,7 @@ header{
     @include btn($background:$dark-pink, $width:1200px, $height:60px);
     @include text($size:40px, $family:'Alegreya',$weight:600);
     text-align: center;
-    margin: 10px auto 0;
+    margin: 10px auto;
      &:hover{
         @include btn($background:$white,$width:1200px, $height:60px,);
         @include text($size:40px,$family:'Alegreya', $color:$text-col, $weight:600);

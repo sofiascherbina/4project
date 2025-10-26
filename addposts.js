@@ -79,8 +79,8 @@ async function renderMyPost(){
     <p>${text}</p>
     <img id="img" src="${image}" alt="${title}" height="200px" width="auto">
     <div class="buttons">
-        <button class="editPostButton" id="${id}">Редагувати</button>
-        <button class="deletePostButton" id="${id}">Видалити</button>
+        <button class="editPostButton" id="${id}" type="button">Редагувати</button>
+        <button class="deletePostButton" id="${id}" type="button">Видалити</button>
     </div>
     <div class="commentsContainer" data-id="">
         <h3>Коментарі:</h3>
@@ -95,7 +95,7 @@ async function renderMyPost(){
 </li>`;
     })
     .join('');
-    postList.insertAdjacentHTML('beforeend',markup);
+    postList.insertAdjacentHTML('beforeend', markup);
 };
 
 async function addPost(e){
@@ -120,39 +120,19 @@ async function addPost(e){
             return await addedPost.json();
         }
         let result = await postCreate(res);
-        data.push(result);
-        renderMyPost();
+        if (currentPage === 'myPage') {
+            postList.innerHTML = '';
+            renderMyPost();
+        }
     }
     catch{
         return alert('post is not added');
     }
 }
-createBtn.addEventListener('click',(event)=>{
-    event.preventDefault();
-    addPost(form);
-});
-
 async function waitLoad(){
     myPage++;
     await getPosts();
 }
-
-async function showSearchedPosts() {
-  if (!template) await templateReady();
-   const inpValue = searchInput.value;
-
-    // if(inpValue.length === 0){
-    //     postList.innerHTML = '';
-    // }
-  
-  const data = await fetch(`https://pixabay.com/api/?key=52031155-91d48f629b7cc6501a4f300a5`);
-  const posts = await data.json();
-
-  const filtered = posts.hits.filter(post => post.user.includes(inpValue));
-
-  renderPost(filtered);
-}
-
 let searchInput = document.querySelector('.search');
 let currentPage = 'mainPage'; 
 
@@ -177,7 +157,6 @@ searchInput.addEventListener('input', _.debounce(async () => {
     if (inpValue === '') {
         postList.innerHTML = '';
         await getPosts();
-        // renderMyPost();
         return;
     }
 
@@ -233,11 +212,55 @@ async function detetePost(id){
         return alert('error');
     }
 }
+async function updatePost(id){
+    try{
+        let post = {
+               title: form.titleInput.value,
+               text:form.contentInput.value,
+               image: form.image.value
+           };
+        let options = {
+            method:'PUT',
+            body: JSON.stringify(post),
+            headers: { "Content-Type": "application/json;charset=UTF-8" }
+        }
+        let updateFetch = await fetch(`http://localhost:3001/posts/${id}`, options);
+        if(!updateFetch.ok){
+            throw new Error('studetn is not updated');
+        }
+        let res = await updateFetch.json();
+        // data.push(res);
+        renderMyPost(res);
+        postList.innerHTML = '';
+        getPosts();
+    }
+    catch{
+        return alert('studetn is not updated');
+    }
+} 
+let modalContainer = document.querySelector('.modal-form-bg');
 postList.addEventListener('click',(event)=>{
     event.preventDefault();
     if(event.target.classList.contains('deletePostButton')){
         detetePost(event.target.id);
-    };
+    }
+      else if(event.target.classList.contains('editPostButton')){
+        modalContainer.classList.add('opened');
+        form.reset();
+        createBtn.textContent = 'Зберегти';
+        createBtn.classList.add('saveChanges');
+        createBtn.classList.remove('create-post');
+        createBtn.removeEventListener('click', handleCreateClick);
+        createBtn.addEventListener('click',()=>{
+            if(createBtn.classList.contains('saveChanges')){
+                postList.innerHTML = '';
+                myPage = 1;
+                updatePost(event.target.id);
+                modalContainer.classList.remove('opened');
+                createBtn.classList.remove('saveChanges');
+                createBtn.classList.add('create-post');
+            }
+        });
+    }
  });
-
 showPosts();

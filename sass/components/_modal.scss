@@ -51,7 +51,7 @@
     @include text($color:$text-col, $size:20px);
     @include input();
 }
-.create-post{
+.create-post, .saveChanges{
  @include btn($border-rad:10px);
     width: 180px;
     height: 60px;

@@ -83,7 +83,7 @@ header {
   font-size: 40px;
   color: #F5F5F5;
   text-align: center;
-  margin: 10px auto 0;
+  margin: 10px auto;
 }
 .load-more:hover {
   width: 1200px;
@@ -387,7 +387,7 @@ header {
   outline: none;
 }
 
-.create-post {
+.create-post, .saveChanges {
   width: 200px;
   height: 60px;
   background-color: #B1B1AB;
@@ -408,7 +408,7 @@ header {
   color: #F5F5F5;
   margin: 30px 0 0 780px;
 }
-.create-post:hover {
+.create-post:hover, .saveChanges:hover {
   width: 180px;
   height: 60px;
   background-color: #F5F5F5;
