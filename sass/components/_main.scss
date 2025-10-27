@@ -1,5 +1,4 @@
 .main{
-    // height: 100vh;
     background-color: $main-bg;
     padding-bottom: 50px;
 }
@@ -8,19 +7,39 @@ header{
     padding-top: 20px;
     background-color: $soft-pink-bg;
 }
+@media screen and (min-width:480px){
+    .title-bg{
+        width: 450px;
+        height: 150px;
+        margin: 50px auto 0;
+    }
+}
+@media screen and (min-width:1200px){
+    .title-bg{
+        width: 1000px;
+        height: 200px;
+        margin: 0 auto;
+    }
+}
 .title-bg{
      background: linear-gradient($main-bg, $main-bg),
             url('/img/title-bg.jfif') top/cover no-repeat;
-    width: 1000px;
-    height: 200px;
     padding-top: 40px;
     border-radius: 50px;
     border: none;
-    margin: 0 auto;
     box-shadow:0 0 25px rgba(0,0,0,50%);
 }
-.main-title{
+@media screen and (min-width:480px){
+    .main-title{
+        @include text($family:'Alegreya', $size:64px);
+    }
+}
+@media screen and (min-width:1200px){
+    .main-title{
     @include text($family:'Alegreya', $size:100px);
+    }
+}
+.main-title{
     text-align: center;
     margin: 0;
     text-shadow: (0px 7px 4px $text-col);
@@ -32,9 +51,18 @@ header{
     height: 250px;
     padding-top: 40px;
 }
+@media screen and (min-width:480px){
+    .search{
+       width: 450px;
+    }
+}
+@media screen and (min-width:1200px){
+    .search{
+       width: 1000px;
+    }
+}
 .search{
     display: block;
-    width: 1000px;
     height: 70px;
     @include text($color:$text-col, $size:25px);
     @include input();
@@ -47,14 +75,28 @@ header{
         outline: none;
     }
 }
+@media screen and (min-width:480px){
+    .load-more{
+       @include btn($background:$dark-pink, $width:450px, $height:60px);
+       &:hover{
+         @include btn($background:$white,$width:450px, $height:60px,);
+       }
+    }
+}
+@media screen and (min-width:1200px){
+    .load-more{
+       @include btn($background:$dark-pink, $width:1200px, $height:60px);
+       &:hover{
+            @include btn($background:$white,$width:1200px, $height:60px,);
+       }
+    }
+}
 .load-more{
     display: block;
-    @include btn($background:$dark-pink, $width:1200px, $height:60px);
     @include text($size:40px, $family:'Alegreya',$weight:600);
     text-align: center;
     margin: 10px auto;
      &:hover{
-        @include btn($background:$white,$width:1200px, $height:60px,);
         @include text($size:40px,$family:'Alegreya', $color:$text-col, $weight:600);
         border: 7px solid $text-col;
     }
@@ -66,8 +108,17 @@ header{
     flex-wrap: wrap;
     padding: 0;
 }
+@media screen and (min-width:480px){
+    .post{
+       width: 400px;
+    }
+}
+@media screen and (min-width:1200px){
+    .post{
+      width: 530px;
+    }
+}
 .post{
-    width: 530px;
     height: 700px;
     padding-left: 10px;
     background-color: $soft-pink-bg;
@@ -103,10 +154,18 @@ header{
         @include text($size: 15px);
     }
 }
-
+@media screen and (min-width:480px){
+    .commentsContainer{
+       width: 360px;
+    }
+}
+@media screen and (min-width:1200px){
+    .commentsContainer{
+       width: 470px;
+    }
+}
 .commentsContainer{
     background-color: $dark-pink;
-    width: 470px;
     height: 300px;
     border-radius: 20px;
     padding-top: 5px;
@@ -131,11 +190,30 @@ header{
 .comment-list::-webkit-scrollbar-track {
  margin-right: 4px;
 }
+@media screen and (min-width:480px){
+    .createCommentForm{
+        & input{
+            width: 340px;
+        }
+        & button{
+            margin: 30px 0 0 200px;
+        }
+    }
+}
+@media screen and (min-width:1200px){
+    .createCommentForm{
+        & input{
+            width: 420px;
+        }
+        & button{
+            margin: 30px 0 0 300px;
+        }
+    }
+}
 .createCommentForm{
     & input{
         @include input($bg:$soft-pink-bg, $border-rad:10px);
         @include text($size:15px);
-        width: 420px;
         height: 35px;
         display: block;
         margin: 0 auto;
@@ -144,21 +222,33 @@ header{
     & button{
         @include btn($width:150px, $height:40px, $border-rad:10px);
         @include text($size: 15px);
-        margin: 30px 0 0 300px;
+    }
+}
+@media screen and (min-width:480px){
+    .page-selector{
+       top: 10px;
+       left: 20px;
+       width: 100px;
+       height: 50px;
+       @include text($size:15px);
+    }
+}
+@media screen and (min-width:1200px){
+    .page-selector{
+        top: 100px;
+        left: 30px;
+        width: 170px;
+        height: 60px;
+        @include text($size:20px);
     }
 }
 .page-selector{
     position: absolute;
-    top: 100px;
-    left: 30px;
-    width: 170px;
-    height: 60px;
     padding: 0 5px;
     background-color: $dark-pink;
     border: 5px solid $white;
     border-radius: 10px;
     outline: none;
-    @include text($size:20px);
     transition: transform 0.3s ease;
      &:hover{
         transform: scale(1.05);

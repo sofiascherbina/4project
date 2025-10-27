@@ -9,24 +9,47 @@ header {
   background-color: #E3D4D1;
 }
 
+@media screen and (min-width: 480px) {
+  .title-bg {
+    width: 450px;
+    height: 150px;
+    margin: 50px auto 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .title-bg {
+    width: 1000px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
 .title-bg {
   background: -webkit-gradient(linear, left top, left bottom, from(rgba(227, 212, 209, 0.4)), to(rgba(227, 212, 209, 0.4))), url("/img/title-bg.jfif") top/cover no-repeat;
   background: linear-gradient(rgba(227, 212, 209, 0.4), rgba(227, 212, 209, 0.4)), url("/img/title-bg.jfif") top/cover no-repeat;
-  width: 1000px;
-  height: 200px;
   padding-top: 40px;
   border-radius: 50px;
   border: none;
-  margin: 0 auto;
   -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
           box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (min-width: 480px) {
+  .main-title {
+    font-family: "Alegreya";
+    font-weight: 400;
+    font-size: 64px;
+    color: #F5F5F5;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .main-title {
+    font-family: "Alegreya";
+    font-weight: 400;
+    font-size: 100px;
+    color: #F5F5F5;
+  }
+}
 .main-title {
-  font-family: "Alegreya";
-  font-weight: 400;
-  font-size: 100px;
-  color: #F5F5F5;
   text-align: center;
   margin: 0;
   text-shadow: 0px 7px 4px #B59D9A;
@@ -39,9 +62,18 @@ header {
   padding-top: 40px;
 }
 
+@media screen and (min-width: 480px) {
+  .search {
+    width: 450px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .search {
+    width: 1000px;
+  }
+}
 .search {
   display: block;
-  width: 1000px;
   height: 70px;
   font-family: "Rubik";
   font-weight: 400;
@@ -65,19 +97,64 @@ header {
   outline: none;
 }
 
+@media screen and (min-width: 480px) {
+  .load-more {
+    width: 450px;
+    height: 60px;
+    background-color: #D7BDB8;
+    border: none;
+    border-radius: 15px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+  }
+  .load-more:hover {
+    width: 450px;
+    height: 60px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 15px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .load-more {
+    width: 1200px;
+    height: 60px;
+    background-color: #D7BDB8;
+    border: none;
+    border-radius: 15px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+  }
+  .load-more:hover {
+    width: 1200px;
+    height: 60px;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 15px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+  }
+}
 .load-more {
   display: block;
-  width: 1200px;
-  height: 60px;
-  background-color: #D7BDB8;
-  border: none;
-  border-radius: 15px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
   font-family: "Alegreya";
   font-weight: 600;
   font-size: 40px;
@@ -86,17 +163,6 @@ header {
   margin: 10px auto;
 }
 .load-more:hover {
-  width: 1200px;
-  height: 60px;
-  background-color: #F5F5F5;
-  border: none;
-  border-radius: 15px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
   font-family: "Alegreya";
   font-weight: 600;
   font-size: 40px;
@@ -115,8 +181,17 @@ header {
   padding: 0;
 }
 
+@media screen and (min-width: 480px) {
+  .post {
+    width: 400px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .post {
+    width: 530px;
+  }
+}
 .post {
-  width: 530px;
   height: 700px;
   padding-left: 10px;
   background-color: #E3D4D1;
@@ -182,9 +257,18 @@ header {
   color: #F5F5F5;
 }
 
+@media screen and (min-width: 480px) {
+  .commentsContainer {
+    width: 360px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .commentsContainer {
+    width: 470px;
+  }
+}
 .commentsContainer {
   background-color: #D7BDB8;
-  width: 470px;
   height: 300px;
   border-radius: 20px;
   padding-top: 5px;
@@ -217,6 +301,22 @@ header {
   margin-right: 4px;
 }
 
+@media screen and (min-width: 480px) {
+  .createCommentForm input {
+    width: 340px;
+  }
+  .createCommentForm button {
+    margin: 30px 0 0 200px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .createCommentForm input {
+    width: 420px;
+  }
+  .createCommentForm button {
+    margin: 30px 0 0 300px;
+  }
+}
 .createCommentForm input {
   -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
@@ -227,7 +327,6 @@ header {
   font-weight: 400;
   font-size: 15px;
   color: #F5F5F5;
-  width: 420px;
   height: 35px;
   display: block;
   margin: 0 auto;
@@ -252,24 +351,39 @@ header {
   font-weight: 400;
   font-size: 15px;
   color: #F5F5F5;
-  margin: 30px 0 0 300px;
 }
 
+@media screen and (min-width: 480px) {
+  .page-selector {
+    top: 10px;
+    left: 20px;
+    width: 100px;
+    height: 50px;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 15px;
+    color: #F5F5F5;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .page-selector {
+    top: 100px;
+    left: 30px;
+    width: 170px;
+    height: 60px;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 20px;
+    color: #F5F5F5;
+  }
+}
 .page-selector {
   position: absolute;
-  top: 100px;
-  left: 30px;
-  width: 170px;
-  height: 60px;
   padding: 0 5px;
   background-color: #D7BDB8;
   border: 5px solid #F5F5F5;
   border-radius: 10px;
   outline: none;
-  font-family: "Rubik";
-  font-weight: 400;
-  font-size: 20px;
-  color: #F5F5F5;
   -webkit-transition: -webkit-transform 0.3s ease;
   transition: -webkit-transform 0.3s ease;
   transition: transform 0.3s ease;
@@ -282,6 +396,16 @@ header {
           transform: scale(1.05);
 }
 
+@media screen and (min-width: 480px) {
+  .open-modal {
+    margin: 50px 0 0 150px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .open-modal {
+    margin: 50px 0 0 50px;
+  }
+}
 .open-modal {
   width: 180px;
   height: 60px;
@@ -299,7 +423,6 @@ header {
   font-weight: 400;
   font-size: 20px;
   color: #F5F5F5;
-  margin: 50px 0 0 50px;
 }
 .open-modal:hover {
   width: 180px;
@@ -331,42 +454,90 @@ header {
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-.modal-form {
-  width: 1000px;
-  height: 600px;
-  margin: 120px auto;
-  background-color: #E3D4D1;
+@media screen and (min-width: 480px) {
+  .modal-form {
+    width: 450px;
+    margin: 20px auto;
+    height: 530px;
+    background-color: #E3D4D1;
+  }
 }
-
+@media screen and (min-width: 1200px) {
+  .modal-form {
+    width: 1000px;
+    margin: 120px auto;
+    height: 600px;
+    background-color: #E3D4D1;
+  }
+}
 .opened {
   display: block;
 }
 
-.close-modal {
-  width: 60px;
-  height: 60px;
-  background-color: inherit;
-  border: 4px solid #F5F5F5;
-  border-radius: 50px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  margin: 20px 0 0 900px;
-  font-family: "Rubik";
-  font-weight: 600;
-  font-size: 32px;
-  color: #F5F5F5;
+@media screen and (min-width: 480px) {
+  .close-modal {
+    margin: 10px 0 0 390px;
+    width: 40px;
+    height: 40px;
+    background-color: inherit;
+    border: 4px solid #F5F5F5;
+    border-radius: 50px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 25px;
+    color: #F5F5F5;
+  }
 }
-
+@media screen and (min-width: 1200px) {
+  .close-modal {
+    margin: 20px 0 0 900px;
+    width: 60px;
+    height: 60px;
+    background-color: inherit;
+    border: 4px solid #F5F5F5;
+    border-radius: 50px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    font-family: "Rubik";
+    font-weight: 600;
+    font-size: 32px;
+    color: #F5F5F5;
+  }
+}
+@media screen and (min-width: 480px) {
+  #titleInput, #picture {
+    width: 400px;
+    margin: 15px auto;
+  }
+  #contentInput {
+    width: 400px;
+    margin: 20px auto 20px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #titleInput, #picture {
+    width: 600px;
+    margin: 0 auto;
+  }
+  #contentInput {
+    width: 800px;
+    margin: 40px auto 40px;
+  }
+}
 #titleInput, #picture {
   display: block;
-  width: 600px;
   height: 60px;
   padding-left: 20px;
-  margin: 0 auto;
   font-family: "Rubik";
   font-weight: 400;
   font-size: 20px;
@@ -383,10 +554,8 @@ header {
 
 #contentInput {
   display: block;
-  width: 800px;
   height: 200px;
   padding: 20px 0 0 20px;
-  margin: 40px auto 40px;
   font-family: "Rubik";
   font-weight: 400;
   font-size: 20px;
@@ -401,26 +570,52 @@ header {
   outline: none;
 }
 
+@media screen and (min-width: 480px) {
+  .create-post, .saveChanges {
+    width: 200px;
+    height: 60px;
+    background-color: #B1B1AB;
+    border: none;
+    border-radius: 10px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+    margin: 10px 0 0 270px;
+    width: 150px;
+    height: 50px;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 15px;
+    color: #F5F5F5;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .create-post, .saveChanges {
+    width: 200px;
+    height: 60px;
+    background-color: #B1B1AB;
+    border: none;
+    border-radius: 10px;
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
+    width: 180px;
+    height: 60px;
+    font-family: "Rubik";
+    font-weight: 400;
+    font-size: 20px;
+    color: #F5F5F5;
+    margin: 30px 0 0 780px;
+  }
+}
 .create-post, .saveChanges {
-  width: 200px;
-  height: 60px;
-  background-color: #B1B1AB;
-  border: none;
-  border-radius: 10px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 4px 7px 4px rgba(0, 0, 0, 0.25);
-  width: 180px;
-  height: 60px;
   border: 5px solid #F5F5F5;
-  font-family: "Rubik";
-  font-weight: 400;
-  font-size: 20px;
-  color: #F5F5F5;
-  margin: 30px 0 0 780px;
 }
 .create-post:hover, .saveChanges:hover {
   width: 180px;
