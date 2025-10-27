@@ -21,6 +21,7 @@ async function showPosts(){
     const posts = await fetchPost(page, perPage);
     renderPost(posts.hits);
     page++;
+    showComments()
 }
 
 loadMoreBtn.addEventListener('click', showPosts);
@@ -82,20 +83,21 @@ async function renderMyPost(){
         <button class="editPostButton" id="${id}" type="button">Редагувати</button>
         <button class="deletePostButton" id="${id}" type="button">Видалити</button>
     </div>
-    <div class="commentsContainer" data-id="">
+    <div class="commentsContainer" data-id="${id}">
         <h3>Коментарі:</h3>
-            <ul>
+            <ul class="comment-list">
                 <li></li>
             </ul>
         <form class="createCommentForm">
             <input type="text" class="commentInput" placeholder="Новий коментар" required>
-            <button type="submit">Додати коментар</button>
+            <button type="submit" class="add-comment">Додати коментар</button>
         </form>
     </div>
 </li>`;
     })
     .join('');
     postList.insertAdjacentHTML('beforeend', markup);
+    showComments();
 };
 
 async function addPost(e){
@@ -119,7 +121,7 @@ async function addPost(e){
             }
             return await addedPost.json();
         }
-        let result = await postCreate(res);
+        await postCreate(res);
         if (currentPage === 'myPage') {
             postList.innerHTML = '';
             renderMyPost();

@@ -200,7 +200,21 @@ header {
 }
 
 .comment-list {
+  overflow-y: auto;
   height: 150px;
+}
+
+.comment-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.comment-list::-webkit-scrollbar-thumb {
+  background-color: #B59D9A;
+  border-radius: 4px;
+}
+
+.comment-list::-webkit-scrollbar-track {
+  margin-right: 4px;
 }
 
 .createCommentForm input {

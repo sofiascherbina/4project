@@ -3,14 +3,14 @@
     <h2>{{user}}</h2>
     <p>{{tags}}</p>
     <img id="img" src="{{webformatURL}}" alt="{{tags}}" width="300px">
-    <div class="commentsContainer" data-id="">
+    <div class="commentsContainer" data-id="{{id}}">
         <h3>Коментарі:</h3>
             <ul class="comment-list">
                 <li></li>
             </ul>
         <form class="createCommentForm">
             <input type="text" class="commentInput" placeholder="Новий коментар" required>
-            <button type="submit">Додати коментар</button>
+            <button type="submit" class="add-comment">Додати коментар</button>
         </form>
     </div>
 </li>
