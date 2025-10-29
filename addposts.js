@@ -245,6 +245,7 @@ postList.addEventListener('click',(event)=>{
     event.preventDefault();
     if(event.target.classList.contains('deletePostButton')){
         detetePost(event.target.id);
+        myPage = 1;
     }
       else if(event.target.classList.contains('editPostButton')){
         modalContainer.classList.add('opened');
